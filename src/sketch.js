@@ -1,7 +1,8 @@
 let x = 0;
 let y = 0;
 let r = 0;
-let s = 0;
+let mooseClicked = false;
+let faceClicked = false;
 function setup() {
   // These lines are fitting our canvas
   // where we want in the DOM
@@ -14,14 +15,14 @@ function setup() {
 function draw() {
   background(138, 196, 235);
   drawBackground();
-  if (x < 115) {
+  if (x < 115 && mooseClicked) {
     x++;
   }
-  if (y < 310 && x == 115) {
+  if (y < 310 && faceClicked) {
     y++;
     r += 0.1;
   }
-  if (y == 310 && x == 115) {
+  if (y == 310) {
     while (r > 0) {
       r -= 0.1;
     }
@@ -273,4 +274,13 @@ function drawCloud(x, y) {
   ellipse(77, 77, 80, 20);
   ellipse(64, 70, 28, 28);
   ellipse(85, 65, 40, 40);
+}
+
+function mouseClicked() {
+  if (mouseX >= 0 && mouseX <= 150 && mouseY >= 150 && mouseY <= 300) {
+    mooseClicked = true;
+  }
+  if (mouseX >= 250 && mouseX <= 370 && mouseY >= 0 && mouseY <= 80) {
+    faceClicked = true;
+  }
 }
