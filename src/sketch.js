@@ -8,8 +8,10 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(138, 196, 235);
+  drawBackground();
   drawMoose();
+  drawHead();
 }
 
 function drawMoose() {
@@ -97,4 +99,160 @@ function drawMoose() {
   pop();
 
   pop();
+}
+
+function drawHead() {
+  push();
+  fill(204, 122, 122); //Skin Color
+  translate(310, 310);
+  noStroke();
+
+  //-----------Ears----------
+  ellipse(60, 0, 20, 40);
+  ellipse(-60, 0, 20, 40);
+
+  //-----------Head----------
+  ellipse(0, 0, 120, 160);
+
+  //-----------Hair----------
+  //Hair by ear
+  push();
+  fill(55, 29, 16);
+  triangle(35, -35, 55, -35, 59, -10);
+  triangle(-55, -35, -35, -35, -59, -10);
+  pop();
+  //Top part of hair
+  push();
+  stroke(55, 29, 16);
+  strokeWeight(20);
+  arc(0, -35, 90, 80, PI, 0);
+  pop();
+
+  //----------Lips---------
+  push();
+  fill(150, 0, 0);
+  ellipse(0, 45, 50, 13);
+  ellipse(0, 50, 50, 10);
+  triangle(-22, 42, -22, 52, -30, 47.5);
+  triangle(22, 42, 22, 52, 30, 47.5);
+  stroke(0, 40);
+  strokeWeight(1.5);
+  line(-28, 47.5, 28, 47.5);
+  pop();
+
+  //---------------Nose--------
+  push();
+  stroke(0);
+  strokeWeight(1.5);
+  //Middle of nose
+  arc(0, 27, 17, 10, 0, PI);
+  //Left of Nose
+  arc(-10, 25, 8, 10, PI / 2, (3 * PI) / 2);
+  //Right of Nose
+  arc(10, 25, 8, 10, -PI / 2, PI / 2);
+  noFill();
+  //Right Nose Bridge
+  beginShape();
+  curveVertex(7, 11);
+  curveVertex(7, 11);
+  curveVertex(7.5, 5);
+  curveVertex(10, -1);
+  curveVertex(10, -1);
+  endShape();
+  //Left Nose Bridge
+  beginShape();
+  curveVertex(-7, 11);
+  curveVertex(-7, 11);
+  curveVertex(-7.5, 5);
+  curveVertex(-10, -1);
+  curveVertex(-10, -1);
+  endShape();
+  pop();
+
+  //-------------Eyes---------
+  push();
+  fill(250);
+  //Right Eye
+  ellipse(25, -10, 25, 12);
+  //Left Eye
+  ellipse(-25, -10, 25, 12);
+  //Pupils
+  push();
+  fill(0);
+  stroke(55, 29, 16, 200);
+  strokeWeight(6);
+  ellipse(25, -10, 8, 8);
+  ellipse(-25, -10, 8, 8);
+  pop();
+  pop();
+
+  //---------Eyebrows--------
+  push();
+  stroke(55, 29, 16);
+  strokeWeight(4);
+  //Right Eyebrow
+  beginShape();
+  curveVertex(11, -16);
+  curveVertex(11, -16);
+  curveVertex(26, -21);
+  curveVertex(37, -19);
+  curveVertex(37, -19);
+  endShape();
+  //Left Eyebrow
+  beginShape();
+  curveVertex(-11, -16);
+  curveVertex(-11, -16);
+  curveVertex(-26, -21);
+  curveVertex(-37, -19);
+  curveVertex(-37, -19);
+  endShape();
+  pop();
+  pop();
+}
+
+function drawBackground() {
+  push();
+  fill(55, 29, 16); //Brown
+
+  //Bottom Rectangle
+  rect(0, (height * 2) / 3, width, height / 3);
+
+  //-------------Clouds---------------
+  push();
+  drawCloud(0, 0);
+  drawCloud(200, 30);
+  drawCloud(-260, 90);
+  drawCloud(360, -175);
+  drawCloud(-40, 190);
+  pop();
+
+  //---------- Lines on Bottom ----------
+  push();
+  stroke(0);
+  line(-30, height, 30, (height * 2) / 3);
+  line(0, height, 55, (height * 2) / 3);
+  line(30, height, 80, (height * 2) / 3);
+  line(62.5, height, 105, (height * 2) / 3);
+  line(95, height, 130, (height * 2) / 3);
+  line(127.5, height, 155, (height * 2) / 3);
+  line(160, height, 180, (height * 2) / 3);
+  line(195, height, 205, (height * 2) / 3);
+  line(230, height, 230, (height * 2) / 3);
+  line(262.5, height, 255, (height * 2) / 3);
+  line(295, height, 280, (height * 2) / 3);
+  line(330, height, 300, (height * 2) / 3);
+  line(367.5, height, 320, (height * 2) / 3);
+  line(400, height, 345, (height * 2) / 3);
+  line(430, height, 370, (height * 2) / 3);
+  pop();
+  pop();
+}
+
+function drawCloud(x, y) {
+  translate(x, y);
+  noStroke();
+  fill(255);
+  ellipse(77, 77, 80, 20);
+  ellipse(64, 70, 28, 28);
+  ellipse(85, 65, 40, 40);
 }
