@@ -1,3 +1,7 @@
+let x = 0;
+let y = 0;
+let r = 0;
+let s = 0;
 function setup() {
   // These lines are fitting our canvas
   // where we want in the DOM
@@ -10,14 +14,17 @@ function setup() {
 function draw() {
   background(138, 196, 235);
   drawBackground();
-  drawMoose();
+  if (x <= 115) {
+    x++;
+  }
+  drawMoose(x);
   drawHead();
 }
 
-function drawMoose() {
+function drawMoose(x) {
   push();
 
-  translate(135, 400);
+  translate(x, 400);
   scale(0.7);
 
   noStroke();
