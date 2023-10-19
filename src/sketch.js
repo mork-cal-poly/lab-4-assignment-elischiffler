@@ -15,12 +15,16 @@ function setup() {
 function draw() {
   background(138, 196, 235);
   drawBackground();
-  if (x < 115 && mooseClicked) {
-    x++;
+  if (y == 310 || mooseClicked) {
+    if (x < 115) {
+      x++;
+    }
   }
-  if (y < 310 && faceClicked) {
-    y++;
-    r += 0.1;
+  if (x == 115 || faceClicked) {
+    if (y < 310) {
+      y++;
+      r += 0.1;
+    }
   }
   if (y == 310) {
     while (r > 0) {
