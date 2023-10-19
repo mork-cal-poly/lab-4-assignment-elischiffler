@@ -14,11 +14,21 @@ function setup() {
 function draw() {
   background(138, 196, 235);
   drawBackground();
-  if (x <= 115) {
+  if (x < 115) {
     x++;
   }
+  if (y < 310 && x == 115) {
+    y++;
+    r += 0.1;
+  }
+  if (y == 310 && x == 115) {
+    while (r > 0) {
+      r -= 0.1;
+    }
+  }
+
   drawMoose(x);
-  drawHead();
+  drawHead(y, r);
 }
 
 function drawMoose(x) {
@@ -108,10 +118,11 @@ function drawMoose(x) {
   pop();
 }
 
-function drawHead() {
+function drawHead(y, r) {
   push();
   fill(204, 122, 122); //Skin Color
-  translate(310, 310);
+  translate(310, y);
+  rotate(r);
   noStroke();
 
   //-----------Ears----------
